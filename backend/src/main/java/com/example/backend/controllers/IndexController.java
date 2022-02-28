@@ -14,18 +14,16 @@ public class IndexController {
     @Autowired
     private GreetingRepository greetingRepository;
 
-    public AtomicLong id = new AtomicLong(1);
+    public long id = 1;
 
     //ответ на запрос в корень
     @GetMapping("/")
     public Object main() {
         //если в бд нет записи - создаем
-        if (greetingRepository.findAllById(id.get()).isEmpty()) {
-            greetingRepository.save(new Greeting(id.get(), "Hello, World!"));
+        if (greetingRepository.findAll().isEmpty()) {
+            greetingRepository.save(new Greeting(id, "Hello, World!"));
         }
 
-        //выводим записем с id = 1
-        ArrayList result = greetingRepository.findAllById(id.get());
-        return result.get(0);
+        return greetingRepository.findAll().get(0);
     }
 }

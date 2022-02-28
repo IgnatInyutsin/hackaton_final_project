@@ -10,5 +10,5 @@ import java.util.ArrayList;
 @Repository
 public interface GreetingRepository extends CrudRepository<Greeting, Long> {
     //метод для поиска элементов по id создается автоматически
-    ArrayList<Greeting> findAllById(Long id);
+    ArrayList<Greeting> findAll();
 }
